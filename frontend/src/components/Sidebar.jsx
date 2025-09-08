@@ -38,6 +38,7 @@ export default function Sidebar() {
       <nav className="space-y-3 flex-1">
         <Item to="/" label="Inicio (Reconocimiento)" icon={Home} />
         <Item to="/products" label="Productos (CRUD)" icon={Package} />
+        <Item to="/iot" label="Productos IoT" icon={Package} /> {/* NUEVO */}
       </nav>
 
       {/* Botón de cerrar sesión */}

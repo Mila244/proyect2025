@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import ProductForm from "./pages/ProductForm";
+import IoTProducts from "./pages/IoTProducts"; // NUEVO
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -25,6 +26,8 @@ export default function App() {
         <Route path="/products" element={<PrivateRoute><Products /></PrivateRoute>} />
         <Route path="/products/new" element={<PrivateRoute><ProductForm /></PrivateRoute>} />
         <Route path="/products/edit/:id" element={<PrivateRoute><ProductForm /></PrivateRoute>} />
+        <Route path="/iot" element={<PrivateRoute><IoTProducts /></PrivateRoute>} /> {/* NUEVO */}
+
       </Routes>
     </BrowserRouter>
   );

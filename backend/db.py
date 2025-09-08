@@ -8,3 +8,4 @@ db = client[DB_NAME]
 # ✅ Definir directamente las colecciones como variables
 users_col = db["users"]
 products_col = db["products"]
+iot_products_col = db["products_iot"]
