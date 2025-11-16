@@ -1,40 +1,44 @@
-# Proyecto 2025 - IoT & Cámara Scanner
+# Proyecto 2025 - Plataforma IoT y Cámara Scanner
 
 ## Descripción
-Este proyecto es una plataforma web para gestión de productos y dispositivos IoT. Incluye:
-- Dashboard de productos con estilo premium.
-- Visualización de gráficos de estadísticas.
-- Escáner de productos mediante cámara.
-- Exportación de datos tipo Excel.
+Proyecto 2025 es una plataforma web para la gestión de productos y dispositivos IoT. Permite:
 
-## Tecnologías
-- **Frontend:** React, Recharts, Tailwind / CSS personalizado.
-- **Backend:** Node.js / Express / Python / Flask (dependiendo de tu proyecto).
-- **Otros:** MQTT para IoT, WebCam API para reconocimiento por cámara.
+- Visualizar productos con estilo moderno y animaciones CSS.
+- Monitorear estadísticas mediante gráficos interactivos.
+- Escanear productos usando la cámara del dispositivo.
+- Exportar datos a Excel de forma sencilla.
+- Organizar productos por día, marca y otras categorías.
+
+El objetivo es combinar **IoT**, **visualización de datos** y **reconocimiento por cámara** en una sola aplicación.
+
+---
+
+## Tecnologías Utilizadas
+
+- **Frontend:** React, Tailwind CSS / CSS personalizado, Recharts.
+- **Backend:** Node.js / Express (o Flask según implementación).
+- **IoT:** MQTT para comunicación con dispositivos.
+- **Extras:** Exportación de datos tipo Excel, WebCam API para cámara.
+
+---
 
 ## Instalación
 
-1. Clona el repositorio:
+1. Clonar el repositorio:
 
-
+```bash
 git clone https://github.com/Mila244/proyect2025.git
 cd proyect2025
-Instala dependencias del frontend:
-
-
-Copiar código
+```bash
+2. Instalar dependencias del frontend:
 cd frontend
 npm install
-Instala dependencias del backend:
-
-
-Copiar código
+```bash
+3. Instalar dependencias del backend:
 cd ../backend
 npm install
-Ejecuta el proyecto:
-
-
-Copiar código
+```bash
+4. Ejecutar el proyecto:
 # Frontend
 cd ../frontend
 npm start
@@ -42,11 +46,15 @@ npm start
 # Backend
 cd ../backend
 npm start
+
 Uso
+
 Abre la aplicación en http://localhost:3000.
 
-Explora el dashboard de productos.
+Explora el dashboard de productos con gráficos y animaciones.
 
-Usa la cámara para escanear productos.
+Escanea productos con la cámara desde la sección de "Reconocimiento con cámara".
 
-Exporta los datos usando el botón de exportar.
+Filtra productos por marca, día u otras categorías.
+
+Exporta los datos usando el botón Exportar a Excel.
