@@ -13,16 +13,24 @@ def login():
     password = data.get("password")
     print("Intentando login con:", email, password)
 
-    user = users_col().find_one({"email": email})
-    if not user or not check_password_hash(user["password"], password):
+    # ✔ FIX FINAL: esto sí funciona
+    user = users_col.find_one({"email": email})
+
+    if not user:
+        print("Usuario no encontrado")
         return jsonify({"error": "credenciales inválidas"}), 401
 
-    # Generar token JWT válido por 1 hora
+    if not check_password_hash(user["password"], password):
+        print("❌ Contraseña incorrecta")
+        return jsonify({"error": "credenciales inválidas"}), 401
+
     token = jwt.encode(
-        {"email": email, "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)},
+        {
+            "email": email,
+            "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+        },
         JWT_SECRET,
         algorithm="HS256"
     )
 
-    # Retornar token al frontend
     return jsonify({"token": token})

@@ -41,7 +41,6 @@ export default function CameraScanner() {
       async (blob) => {
         const file = new File([blob], "capture.jpg", { type: "image/jpeg" });
 
-        // 🔹 Enviar al backend
         setLoading(true);
         setResult(null);
 
@@ -69,43 +68,33 @@ export default function CameraScanner() {
   };
 
   return (
-    <div className="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-xl border border-gray-700">
-      <h3 className="text-xl font-semibold text-white mb-4">Reconocimiento con cámara</h3>
-      <div className="relative w-72 h-96 bg-gray-900 rounded-lg overflow-hidden border-2 border-indigo-500">
+    <div className="scanner-container">
+
+      <div className="video-wrapper">
         <video
           ref={videoRef}
           autoPlay
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          {!ready && (
-            <p className="text-white text-lg animate-pulse">Cargando cámara...</p>
-          )}
-        </div>
+        {!ready && <p className="loading-text">Cargando cámara...</p>}
       </div>
 
-      <canvas ref={canvasRef} className="hidden" />
+      <canvas ref={canvasRef} style={{ display: "none" }} />
 
-      <button
-        onClick={capture}
-        disabled={!ready || loading}
-        className="mt-6 px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
-      >
-        📸 {loading ? "Analizando..." : "Capturar"}
+      <button className="capture-btn" onClick={capture} disabled={!ready || loading}>
+        {loading ? "Analizando..." : "Capturar"}
       </button>
 
-      {/* Resultado */}
       {result && !loading && (
-        <div className="mt-6 bg-gray-700 p-4 rounded-lg shadow-md w-80 text-center">
+        <div className="result-card">
           {result.error ? (
-            <p className="text-red-400">{result.error}</p>
+            <p className="error-text">{result.error}</p>
           ) : (
             <>
-              <h2 className="text-xl font-bold text-white">{result.name}</h2>
-              <p className="text-gray-300">Marca: {result.brand}</p>
-              <p className="text-green-400 font-semibold">S/ {result.price}</p>
-              <p className="text-gray-400 mt-2">{result.description}</p>
+              <h2>{result.name}</h2>
+              <p><strong>Marca:</strong> {result.brand}</p>
+              <p><strong>Precio:</strong> {result.price}</p>
+              <p>{result.description}</p>
             </>
           )}
         </div>

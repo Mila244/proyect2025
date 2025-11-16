@@ -75,11 +75,13 @@ export default function Dashboard() {
     <div className="p-6 grid gap-6">
       {/* Cámara */}
       <div>
-        <h2 className="text-2xl font-bold mb-4">Reconocimiento con cámara</h2>
+        <p></p>
+        <h2 className="text-12xl font-extrabold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 drop-shadow-lg">
+          Reconocimiento con cámara </h2>
         <CameraScanner onCapture={onCapture} />
-        {loading && <p className="mt-4 text-gray-600">Analizando...</p>}
+        {loading && <p className="">Analizando...</p>}
         {result && (
-          <div className="mt-4 bg-white border rounded p-4 shadow max-w-md">
+          <div className="">
             <p><b>Nombre:</b> {result.name}</p>
             <p><b>Marca:</b> {result.brand}</p>
             <p><b>Precio:</b> S/.{result.price}</p>

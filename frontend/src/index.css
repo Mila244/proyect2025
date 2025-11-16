@@ -1,72 +1,1073 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* index.css */
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* Reset básico */
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Fondo animado estilo premium (ondas suaves, movimiento) */
+body {
+  /* Cambiado a min-height para evitar problemas con sidebars fijos y overflow */
   min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 10%);
+  animation: rotateBg 20s linear infinite;
+  z-index: 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://media.istockphoto.com/id/1426176270/es/vector/vista-de-%C3%A1ngulo-alto-del-escritorio-de-maquillaje-sombra-de-ojos-m%C3%A1scara-de-pesta%C3%B1as-l%C3%A1piz.jpg?s=612x612&w=0&k=20&c=g4wvV6jWSmkMfWR689iCUKilQYeRtRA-4nEWTI02Lsw=') center/cover no-repeat;
+  opacity: 0.05;
+  animation: moveBg 30s linear infinite alternate;
+  z-index: 0;
+}
+
+/* Card del login */
+.login-card {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 400px;
+  animation: fadeInUp 1s ease forwards;
+  z-index: 1;
+}
+
+/* Logo animado */
+.login-card img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
+  animation: bounceIn 1s ease;
+}
+
+/* Título grande */
+.login-card h2 {
+  font-size: 2.2rem;
+  color: #222222;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* Inputs */
+.login-card input {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #888;
+  box-shadow: 0 0 15px rgba(150, 150, 150, 0.2);
+}
+
+/* Botón */
+.login-card button {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #555555, #333333);
+  color: #ffffff;
+  font-size: 1.15rem;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.login-card button:hover {
+  background: linear-gradient(135deg, #333333, #111111);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateBg {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes moveBg {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(20px) translateY(20px); }
+}
+
+/* Sidebar elegante y profesional */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: #f9f9f9; /* gris muy suave */
+  border-right: 1px solid #e2e2e2;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
+  padding: 50px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: fadeInLeft 0.8s ease forwards;
+  z-index: 100;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+/* Sidebar colapsada */
+.sidebar.collapsed {
+  width: 90px; /* ancho mínimo cuando está escondido */
+  padding: 50px 10px;
+}
+
+/* Logo / Título */
+.sidebar h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222222;
+
+  text-align: center;
+  letter-spacing: 1px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Ocultar título al colapsar */
+.sidebar.collapsed h1 {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* Botón de colapsar */
+.collapse-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+  color: #222222;
+}
+
+/* Navegación */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+  justify-content: center; /* centrar verticalmente al colapsar */
+}
+
+/* Items de navegación */
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1.1rem;
+  color: #3a3939;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.sidebar nav a:hover {
+  background-color: #fff3f9; /* hover elegante y suave */
+  color: #111111;
+  transform: translateX(5px);
+}
+
+/* Botón de cerrar sesión */
+.sidebar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 14px;
+  background-color: #f53a72; /* color elegante */
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.sidebar button:hover {
+  background-color: #e60825;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(97, 3, 3, 0.15);
+}
+
+/* Animaciones específicas solo de sidebar */
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* CameraScanner aislado */
+.scanner-container {
+  max-width: 700px;
+  margin: 80px auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* Video */
+.video-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.video-wrapper video {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background-color: #000;
+}
+
+/* Loading cámara */
+.loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #555555;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Botón Capturar */
+.capture-btn {
+  padding: 15px 30px;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 12px;
+  background-color: rgb(247, 44, 128);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.capture-btn:hover:not(:disabled) {
+  background-color: #222222;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.capture-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Resultados destacados */
+.result-card {
+  background-color: #ffffff;
+  padding: 35px 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin-top: 30px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.result-card h2 {
+  font-size: 2rem; /* mucho más grande */
+  margin-bottom: 20px;
+  color: #222222;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.result-card p {
+  font-size: 1.3rem; /* más grande para visibilidad */
+  margin-bottom: 12px;
+  color: #555555;
+}
+
+.result-card p strong {
+  color: #333333;
+}
+
+.error-text {
+  font-size: 1.3rem;
+  color: #c0392b;
+  font-weight: 700;
+}
+
+/* IOT / tabla */
+.iot-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px 25px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #ffffff; /* fondo blanco */
+  color: #222222;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Encabezado */
+.iot-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.iot-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.iot-header p {
+  font-size: 1rem;
+  color: #555555;
+}
+
+.iot-header span {
+  font-weight: 600;
+  color: #111111;
+}
+
+/* Agrupación por día */
+.day-group {
+  margin-bottom: 40px;
+}
+
+.day-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 5px;
+  color: #222222;
+}
+
+/* Tabla tipo Excel */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.iot-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.iot-table th,
+.iot-table td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.iot-table th {
+  background-color: #f5f5f5;
+  font-weight: 700;
+}
+
+.iot-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.iot-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Pie con botón de exportar */
+.iot-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.iot-export-btn {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.iot-export-btn:hover {
+  background-color: #357ab7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .iot-container {
+    padding: 15px 20px;
+  }
+
+  .day-title {
+    font-size: 1.2rem;
+  }
+
+  .iot-table th,
+  .iot-table td {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .iot-export-btn {
+    width: 100%;
+  }
+}
+
+/* productform Contenedor principal */
+.product-form-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #222222;
+}
+
+/* Título */
+.product-form-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #333333;
+}
+
+/* Formulario */
+.product-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs y textarea */
+.product-form-container input[type="text"],
+.product-form-container input[type="number"],
+.product-form-container select,
+.product-form-container textarea,
+.product-form-container input[type="file"] {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.product-form-container input:focus,
+.product-form-container select:focus,
+.product-form-container textarea:focus {
+  border-color: #4a90e2; /* Resalta al seleccionar */
+  box-shadow: 0 4px 12px rgba(74,144,226,0.2);
+}
+
+/* Botón de enviar */
+.product-form-container button {
+  padding: 14px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #f53a72, #ff758c); /* colorido y llamativo */
+  color: #ffffff;
+}
+
+.product-form-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245,58,114,0.4);
+}
+
+/* Inputs coloridos opcionales para resaltar valores */
+.product-form-container input[type="text"]:not(:focus),
+.product-form-container input[type="number"]:not(:focus),
+.product-form-container select:not(:focus),
+.product-form-container textarea:not(:focus) {
+  background-color: #fdf2f7; /* Rosa pálido */
+}
+
+/* Textarea */
+.product-form-container textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* File input */
+.product-form-container input[type="file"] {
+  background-color: #f0f8ff; /* Azul muy suave */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-form-container {
+    padding: 20px 15px;
+  }
+
+  .product-form-container h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* products Contenedor general */
+/* ===========================
+   CONTENEDOR PRINCIPAL FULL WEB
+=========================== */
+
+.products-container {
+  min-height: 100vh;
+  width: 100%;
+  background: #ffffff; /* pantalla blanca */
+  color: #222;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.products-wrapper {
+  width: 100%;
+  max-width: 1800px; /* ancho ideal para web */
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.09);
+  border: 2px solid #f3f3f3;
+}
+
+/* ===========================
+   HEADER 
+=========================== */
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.products-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #111;
+}
+
+.btn-add {
+  padding: 14px 26px;
+  background: #10b981;
+  color: white;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.25s;
+  box-shadow: 0px 4px 8px rgba(16,185,129,0.4);
+}
+
+.btn-add:hover {
+  background: #059669;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   GRID FULL-SCREEN DE HASTA 4 COLUMNAS
+=========================== */
+
+.products-grid {
+  display: grid;
+  gap: 30px;
+
+  /* Max 4 columnas siempre que el monitor lo permita */
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+}
+
+/* Responsive por si quieres algo elegante en pantallas más pequeñas */
+@media (max-width: 1600px) {
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.products-empty {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #777;
+}
+
+/* ===========================
+   TARJETA DISEÑO WEB PREMIUM
+=========================== */
+
+.product-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  border: 2px solid #eee;
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+
+  /* Animación de entrada suave */
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeCard 0.8s forwards;
+}
+
+/* efecto animado de aparición */
+@keyframes fadeCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* barra animada colorida (consolidada en una sola keyframes "rayas") */
+.product-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 12px;
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #ff4d6d,
+    #ff914d,
+    #ffc24d,
+    #4dff91,
+    #4ddfff,
+    #9b4dff,
+    #ff4de1
+  );
+  background-size: 800% 800%;
+  animation: rayas 6s infinite linear;
+}
+
+@keyframes rayas {
+  0% { background-position: 0%; }
+  100% { background-position: 100%; }
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 12px 30px rgba(0,0,0,0.18);
+}
+
+/* ===========================
+   TEXTOS DEL PRODUCTO
+=========================== */
+
+.product-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.product-text {
+  margin-bottom: 6px;
+  font-size: 1.15rem;
+  color: #444;
+}
+
+.product-label {
+  font-weight: bold;
+  color: #000;
+}
+
+.product-desc {
+  margin-top: 10px;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* ===========================
+   BOTONES GRANDES Y ANIMADOS
+=========================== */
+
+.product-buttons {
+  margin-top: 22px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn-edit,
+.btn-delete {
+  flex: 1;
+  padding: 13px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+  border: none;
+  box-shadow: 0px 3px 12px rgba(0,0,0,0.15);
+}
+
+/* Editar */
+.btn-edit {
+  background: #3b82f6;
+}
+
+.btn-edit:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Eliminar */
+.btn-delete {
+  background: #ef4444;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* =====================================
+   PRODUCT FORM PREMIUM + ANIMADO
+===================================== */
+
+.product-form-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px;
+}
+
+.product-form-card {
+  width: 100%;
+  max-width: 750px;
+  background: #fff;
+  padding: 40px 45px;
+  border-radius: 22px;
+  box-shadow: 0px 15px 45px rgba(0,0,0,0.10);
+  border: 2px solid #f2f2f2;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Barra superior multicolor animada */
+.product-form-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(90deg,
+    #ff4d6d,
+    #ff914d,
+    #ffc24d,
+    #4dff91,
+    #4ddfff,
+    #9b4dff,
+    #ff4de1
+  );
+  background-size: 800% 800%;
+  animation: rayas 6s infinite linear;
+}
+
+.animate-form {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeForm 0.7s forwards ease-out;
+}
+
+@keyframes fadeForm {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-form-title {
+  font-size: 2.2rem;
+  text-align: center;
+  font-weight: 900;
+  margin-bottom: 25px;
+  color: #111;
+}
+
+/* Inputs Premium */
+.pf-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1.1rem;
+  border-radius: 14px;
+  border: 1.5px solid #ddd;
+  background-color: #fdf2f7;
+  transition: all 0.3s ease;
+}
+
+.pf-input:focus {
+  border-color: #4ddfff;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0,180,255,0.25);
+  outline: none;
+}
+
+.pf-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.pf-file {
+  background-color: #e9f5ff;
+}
+
+/* Botón Premium */
+.pf-btn {
+  width: 100%;
+  padding: 16px 22px;
+  margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #f53a72, #ff758c);
+  color: white;
+  transition: 0.25s;
+  box-shadow: 0px 6px 22px rgba(245, 58, 114, 0.35);
+}
+
+.pf-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 10px 30px rgba(255, 70, 140, 0.45);
+}
+
+/* fin del archivo */
+/* =============================== */
+/* 🔧 FIX DEFINITIVO PARA BOTONES  */
+/* =============================== */
+
+/* Asegurar que TODOS los botones reciban clic */
+button,
+.btn-edit,
+.btn-delete,
+.btn-add,
+.pf-btn,
+.capture-btn,
+.sidebar button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 999 !important;
+}
+
+/* Ninguna tarjeta ni panel bloqueará clics */
+.product-card,
+.product-form-card,
+.products-wrapper,
+.sidebar,
+.login-card,
+.products-container {
+    pointer-events: auto !important;
+}
+
+/* Si algún pseudo-elemento estaba tapando botones */
+*::before,
+*::after {
+    pointer-events: none !important;
+}
+
+/* Reparar botones que no clickean por hover-transform */
+.btn-edit:hover,
+.btn-delete:hover,
+.btn-add:hover,
+button:hover {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Evitar que overflow corte área clickeable */
+.product-card,
+.product-form-card {
+    overflow: visible !important;
+}
+
+/* Algunos contenedores estaban generando capas invisibles */
+* {
+    position: relative;
+}
+
+/* Botones en tarjetas muy pequeñas */
+.product-card button,
+.product-form-card button {
+    z-index: 999 !important;
+}
+.iot-container {
+  height: 100vh;            /* altura total de la pantalla */
+  overflow-y: auto;          /* scroll vertical si hay exceso de contenido */
+  padding: 30px 25px;
+  background-color: #ffffff;
+  color: #222222;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Opcional: suavizar scroll en navegadores compatibles */
+.iot-container {
+  scroll-behavior: smooth;
+}
+/* IoTProducts.css */
+.iot-container {
+  width: 100vw;            /* 100% del ancho de la ventana */
+  height: 100vh;           /* 100% del alto de la ventana */
+  padding: 20px;           /* espacio interno opcional */
+  box-sizing: border-box;  /* incluir padding dentro de width/height */
+  overflow-y: auto;        /* scroll vertical si hay mucho contenido */
+  background-color: #f5f5f5; /* color de fondo opcional */
+}
+
+.iot-header, .iot-footer {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.table-wrapper {
+  overflow-x: auto; /* para scroll horizontal si la tabla es muy ancha */
+}
+
+.iot-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.iot-table th, .iot-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.iot-export-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  transition: background-color 0.s;
+}
+
+
+
+/* Opcional: estilo para el acordeón */
+.day-title {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+/* Contenedor del Scanner */
+.scanner-container {
+  max-width: 700px;
+  margin: 80px auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+
+  height: 80vh;       /* altura máxima de la pantalla */
+  overflow-y: auto;    /* scroll vertical si hay exceso de contenido */
+  scroll-behavior: smooth; /* suavizar scroll */
+}
+
