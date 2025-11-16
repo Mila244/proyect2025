@@ -1,7 +1,5 @@
 # Proyecto 2025 - IoT & Cámara Scanner
 
-![Logo](ruta_del_logo_si_tienes)
-
 ## Descripción
 Este proyecto es una plataforma web para gestión de productos y dispositivos IoT. Incluye:
 - Dashboard de productos con estilo premium.
@@ -18,24 +16,24 @@ Este proyecto es una plataforma web para gestión de productos y dispositivos Io
 
 1. Clona el repositorio:
 
-```bash
+
 git clone https://github.com/Mila244/proyect2025.git
 cd proyect2025
 Instala dependencias del frontend:
 
-bash
+
 Copiar código
 cd frontend
 npm install
 Instala dependencias del backend:
 
-bash
+
 Copiar código
 cd ../backend
 npm install
 Ejecuta el proyecto:
 
-bash
+
 Copiar código
 # Frontend
 cd ../frontend
